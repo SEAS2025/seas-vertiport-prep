@@ -1,12 +1,14 @@
 import { defaultGitHubAuth, githubChannel } from "@cursor/bdk/channels/github";
 
-/**
- * Enable Cursor SCM events at serve/deploy time:
- *   npx @cursor/bdk serve --dir . --cursor-events --cursor-events-repo SEAS2025/Airline-Management-System
- * Set `cursorAccount: { repos: [...] }` when hosting on Cursor with GitHub linked.
- */
 export default githubChannel({
   botName: "seas-vertiport-prep",
+  cursorAccount: {
+    repos: [
+      "SEAS2025/seas-vertiport-prep",
+      "SEAS2025/Airline-Management-System",
+    ],
+    permissions: "pr-write",
+  },
 
   onIssue: (ctx, issue) => {
     if (issue.action !== "opened" && issue.action !== "reopened") {

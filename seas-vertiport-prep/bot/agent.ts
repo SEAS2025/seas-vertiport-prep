@@ -11,4 +11,11 @@ export default defineAgent({
   concurrency: {
     maxRunningTurns: 8,
   },
+  hosting: {
+    egressDomains: [
+      "api.github.com",
+      "github.com",
+      "raw.githubusercontent.com",
+    ],
+  },
 });
