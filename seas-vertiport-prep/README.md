@@ -20,11 +20,27 @@ npx @cursor/bdk serve --dir . --mode single --dev
 
 Model turns require a Cursor API key (`CURSOR_API_KEY` or `npx @cursor/bdk login`).
 
+## Domain subagents
+
+| Subagent | Domain |
+| --- | --- |
+| `regulatory` | FAA / Part 135 / certification |
+| `engineering` | Vertiport design & drawings |
+| `business` | Strategy & launch |
+| `finance` | Models & funding |
+| `partnerships` | Utilities & municipal outreach |
+| `property` | Sites, zoning, airspace |
+| `operations` | GOM, training, checklists |
+
+Orchestrator calls `kickoff_utilization`, then delegates to each subagent in
+parallel via the `task` tool.
+
 ## Tools
 
 | Tool | Purpose |
 | --- | --- |
-| `get_readiness_snapshot` | Six workstreams + anchor doc presence + KV status |
+| `kickoff_utilization` | Start sprint; return parallel subagent prompts |
+| `get_readiness_snapshot` | Seven workstreams + anchor doc presence + KV status |
 | `list_seas_documents` | List/filter `seas-business/` files |
 | `update_workstream` | Persist status, notes, next actions |
 

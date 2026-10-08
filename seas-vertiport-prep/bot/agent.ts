@@ -8,4 +8,7 @@ export default defineAgent({
       { id: "fast", value: "true" },
     ],
   },
+  concurrency: {
+    maxRunningTurns: 8,
+  },
 });
